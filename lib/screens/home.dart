@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:paymint/constants/colors.dart';
 import 'package:paymint/utils/no_stretch.dart';
 import 'package:paymint/widgets/glass_container.dart';
@@ -8,12 +9,12 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   final List<Map<String, dynamic>> quickActions = const [
-    {"icon": FontAwesomeIcons.mobile, "label": "Mobile\nRecharge"},
-    {"icon": FontAwesomeIcons.bolt, "label": "Electricity\nBill"},
-    {"icon": FontAwesomeIcons.tv, "label": "OTT\nRecharge"},
-    {"icon": FontAwesomeIcons.satelliteDish, "label": "DTH\nRecharge"},
-    {"icon": FontAwesomeIcons.wifi, "label": "Broadband"},
-    {"icon": FontAwesomeIcons.moneyCheckDollar, "label": "More"},
+    {"icon": FontAwesomeIcons.mobile, "label": "Mobile\nRecharge", "Route":'MobileRechargeScreen'},
+    {"icon": FontAwesomeIcons.bolt, "label": "Electricity\nBill", "Route":'ElectricityDetails'},
+    {"icon": FontAwesomeIcons.tv, "label": "OTT\nRecharge", "Route":'OTTRecharge'},
+    {"icon": FontAwesomeIcons.satelliteDish, "label": "DTH\nRecharge", "Route":'DTHRechargeScreen'},
+    {"icon": FontAwesomeIcons.wifi, "label": "Broadband", "Route":'BroadbandRechargeScreen'},
+    {"icon": Icons.propane_tank, "label": "LPG\nBooking", "Route":'LPGBookingScreen'},
   ];
 
   final List<Map<String, dynamic>> spendHistory = const [
@@ -119,23 +120,26 @@ class HomeScreen extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) {
                   final action = quickActions[index];
-                  return GlassContainer(
-                    borderRadius: 20,
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(action["icon"], color: AppColors.primaryAccent, size: 28),
-                        const SizedBox(height: 10),
-                        Text(
-                          action["label"],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: AppColors.textSecondary,
-                            fontSize: 12,
+                  return GestureDetector(
+                    onTap: ()=>GoRouter.of(context).pushNamed(action['Route']),
+                    child: GlassContainer(
+                      borderRadius: 20,
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FaIcon(action["icon"], color: AppColors.primaryAccent, size: 28),
+                          const SizedBox(height: 10),
+                          Text(
+                            action["label"],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 12,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
