@@ -10,10 +10,25 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Pay Mint',
-      theme: payMintTheme,
-      routerConfig: routes,
+    return
+      Directionality(
+      textDirection: TextDirection.ltr,
+      child: Stack(
+        children: [
+          Image.asset(
+            'assets/backdrop.jpg',
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+          ),
+          MaterialApp.router(
+            theme: payMintTheme,
+            routerConfig: routes,
+      
+          ),
+        ],
+      ),
     );
+
   }
 }

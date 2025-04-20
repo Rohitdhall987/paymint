@@ -4,7 +4,7 @@ import 'package:paymint/constants/colors.dart';
 
 final ThemeData payMintTheme = ThemeData(
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: AppColors.background,
+  scaffoldBackgroundColor: Colors.transparent,
   primaryColor: AppColors.primaryAccent,
   colorScheme: const ColorScheme.dark(
     primary: AppColors.primaryAccent,
@@ -28,7 +28,7 @@ final ThemeData payMintTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: AppColors.secondaryAccent,
+      backgroundColor: AppColors.primaryAccent,
       foregroundColor: AppColors.background,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
