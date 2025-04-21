@@ -47,7 +47,7 @@ class DTHRechargeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => GoRouter.of(context).pushNamed('DTHPlans'),
+        onPressed: () => GoRouter.of(context).pushNamed('DTHPlansScreen'),
         backgroundColor: AppColors.primaryAccent,
         label: const Text("Next"),
         icon: const Icon(Icons.arrow_forward),

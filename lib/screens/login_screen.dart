@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paymint/constants/colors.dart';
 import 'package:paymint/utils/common.dart';
+import 'package:paymint/utils/shared_prefs.dart';
 import 'package:paymint/widgets/app_input_field.dart';
 import 'package:paymint/widgets/glass_container.dart';
 
@@ -25,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-  void validate() {
+  void validate() async{
     emailErr = null;
     passwordErr = null;
 
@@ -38,6 +39,21 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     setState(() {});
+
+    if (emailErr == null && passwordErr == null) {
+      final savedUser = await SharedPrefs.getUser();
+
+      if (savedUser['email'] == emailCtrl.text &&
+          savedUser['password'] == passwordCtrl.text) {
+
+        await SharedPrefs.saveLoginSession(isLoggedIn: true);
+        GoRouter.of(context).pushReplacementNamed('Home');
+
+      } else {
+        passwordErr = "Invalid credentials";
+        setState(() {});
+      }
+    }
   }
 
   @override

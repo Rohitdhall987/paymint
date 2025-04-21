@@ -47,7 +47,7 @@ class BroadbandRechargeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => GoRouter.of(context).pushNamed('BroadbandPlans'),
+        onPressed: () => GoRouter.of(context).pushNamed('BroadbandPlansScreen'),
         backgroundColor: AppColors.primaryAccent,
         label: const Text("Next"),
         icon: const Icon(Icons.arrow_forward),

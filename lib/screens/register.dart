@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paymint/constants/colors.dart';
 import 'package:paymint/utils/common.dart';
+import 'package:paymint/utils/shared_prefs.dart';
 import 'package:paymint/widgets/app_input_field.dart';
 import 'package:paymint/widgets/glass_container.dart';
 
@@ -30,7 +31,7 @@ class _RegisterState extends State<Register> {
 
 
 
-  void validate() {
+  void validate() async {
     setState(() {
       emailErr = null;
       usernameErr = null;
@@ -59,6 +60,18 @@ class _RegisterState extends State<Register> {
         confirmPasswordErr = 'Passwords do not match';
       }
     });
+
+    if(emailErr==null && passwordErr==null && usernameErr==null && phoneErr==null && confirmPasswordErr==null){
+      await SharedPrefs.saveUser(
+        email: emailCtrl.text,
+        username: usernameCtrl.text,
+        phone: phoneCtrl.text,
+        password: passwordCtrl.text,
+      );
+      await SharedPrefs.saveLoginSession(isLoggedIn: true);
+
+      GoRouter.of(context).pushReplacementNamed('Home');
+    }
   }
 
   @override

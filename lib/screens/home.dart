@@ -8,16 +8,16 @@ import 'package:paymint/widgets/glass_container.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  final List<Map<String, dynamic>> quickActions = const [
-    {"icon": FontAwesomeIcons.mobile, "label": "Mobile\nRecharge", "Route":'MobileRechargeScreen'},
-    {"icon": FontAwesomeIcons.bolt, "label": "Electricity\nBill", "Route":'ElectricityDetails'},
-    {"icon": FontAwesomeIcons.tv, "label": "OTT\nRecharge", "Route":'OTTRecharge'},
-    {"icon": FontAwesomeIcons.satelliteDish, "label": "DTH\nRecharge", "Route":'DTHRechargeScreen'},
-    {"icon": FontAwesomeIcons.wifi, "label": "Broadband", "Route":'BroadbandRechargeScreen'},
-    {"icon": Icons.propane_tank, "label": "LPG\nBooking", "Route":'LPGBookingScreen'},
+  static const List<Map<String, dynamic>> quickActions = [
+    {"icon": FontAwesomeIcons.mobile, "label": "Mobile\nRecharge", "Route": 'MobileRechargeScreen'},
+    {"icon": FontAwesomeIcons.bolt, "label": "Electricity\nBill", "Route": 'ElectricityDetails'},
+    {"icon": FontAwesomeIcons.tv, "label": "OTT\nRecharge", "Route": 'OTTRecharge'},
+    {"icon": FontAwesomeIcons.satelliteDish, "label": "DTH\nRecharge", "Route": 'DTHRechargeScreen'},
+    {"icon": FontAwesomeIcons.wifi, "label": "Broadband", "Route": 'BroadbandRechargeScreen'},
+    {"icon": FontAwesomeIcons.gasPump, "label": "LPG\nBooking", "Route": 'LPGBookingScreen'}, // Changed to FaIcon alternative
   ];
 
-  final List<Map<String, dynamic>> spendHistory = const [
+  static const List<Map<String, dynamic>> spendHistory = [
     {"icon": FontAwesomeIcons.mobile, "title": "Jio Recharge", "amount": "-₹399"},
     {"icon": FontAwesomeIcons.bolt, "title": "Electricity Bill", "amount": "-₹850"},
     {"icon": FontAwesomeIcons.tv, "title": "Netflix", "amount": "-₹199"},
@@ -34,6 +34,7 @@ class HomeScreen extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(24),
             children: [
+              // Welcome Glass Card
               GlassContainer(
                 padding: const EdgeInsets.all(20),
                 borderRadius: 24,
@@ -121,7 +122,7 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final action = quickActions[index];
                   return GestureDetector(
-                    onTap: ()=>GoRouter.of(context).pushNamed(action['Route']),
+                    onTap: () => GoRouter.of(context).pushNamed(action['Route']),
                     child: GlassContainer(
                       borderRadius: 20,
                       padding: const EdgeInsets.all(12),

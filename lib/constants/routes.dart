@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:paymint/screens/actions/broad_band_plans.dart';
 import 'package:paymint/screens/actions/broadband.dart';
+import 'package:paymint/screens/actions/dth_plans.dart';
 import 'package:paymint/screens/actions/dth_select.dart';
 import 'package:paymint/screens/actions/electricity_bill.dart';
 import 'package:paymint/screens/actions/electricity_bill_details_screen.dart';
 import 'package:paymint/screens/actions/lpg.dart';
+import 'package:paymint/screens/actions/lpg_payment.dart';
 import 'package:paymint/screens/actions/mobile_plan_selection_screen.dart';
 import 'package:paymint/screens/actions/mobile_recharge_screen.dart';
+import 'package:paymint/screens/actions/ott_plans.dart';
 import 'package:paymint/screens/actions/ott_select.dart';
 import 'package:paymint/screens/home.dart';
 import 'package:paymint/screens/login_screen.dart';
@@ -66,11 +70,11 @@ GoRouter routes=GoRouter(routes: [
           name: 'OTTRecharge',
           builder: (context,state)=>const OTTRechargeScreen(),
           routes: [
-            // GoRoute(
-            //   path: 'details',
-            //   name: 'ElectricityBillDetails',
-            //   builder: (context,state)=>const ElectricityBillDetailsScreen(),
-            // )
+            GoRoute(
+              path: 'OTTPlans',
+              name: 'OTTPlansScreen',
+              builder: (context,state)=>const OTTPlansScreen(),
+            )
           ]
       ),
       GoRoute(
@@ -78,11 +82,11 @@ GoRouter routes=GoRouter(routes: [
           name: 'DTHRechargeScreen',
           builder: (context,state)=>const DTHRechargeScreen(),
           routes: [
-            // GoRoute(
-            //   path: 'details',
-            //   name: 'ElectricityBillDetails',
-            //   builder: (context,state)=>const ElectricityBillDetailsScreen(),
-            // )
+            GoRoute(
+              path: 'DTHPlans',
+              name: 'DTHPlansScreen',
+              builder: (context,state)=>const DTHPlansScreen(),
+            )
           ]
       ),
       GoRoute(
@@ -90,11 +94,11 @@ GoRouter routes=GoRouter(routes: [
           name: 'BroadbandRechargeScreen',
           builder: (context,state)=>const BroadbandRechargeScreen(),
           routes: [
-            // GoRoute(
-            //   path: 'details',
-            //   name: 'ElectricityBillDetails',
-            //   builder: (context,state)=>const ElectricityBillDetailsScreen(),
-            // )
+            GoRoute(
+              path: 'BroadbandPlans',
+              name: 'BroadbandPlansScreen',
+              builder: (context,state)=>const BroadbandPlansScreen(),
+            )
           ]
       ),
       GoRoute(
@@ -102,11 +106,11 @@ GoRouter routes=GoRouter(routes: [
           name: 'LPGBookingScreen',
           builder: (context,state)=>const LPGBookingScreen(),
           routes: [
-            // GoRoute(
-            //   path: 'details',
-            //   name: 'ElectricityBillDetails',
-            //   builder: (context,state)=>const ElectricityBillDetailsScreen(),
-            // )
+            GoRoute(
+              path: 'LPGPayment',
+              name: 'LPGPaymentScreen',
+              builder: (context,state)=>const LPGPaymentScreen(),
+            )
           ]
       ),
     ],

@@ -47,7 +47,7 @@ class LPGBookingScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => GoRouter.of(context).pushNamed('LPGPayment'),
+        onPressed: () => GoRouter.of(context).pushNamed('LPGPaymentScreen'),
         backgroundColor: AppColors.primaryAccent,
         label: const Text("Next"),
         icon: const Icon(Icons.arrow_forward),

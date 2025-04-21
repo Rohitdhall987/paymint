@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
             width: double.infinity,
           ),
           MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             theme: payMintTheme,
             routerConfig: routes,
       

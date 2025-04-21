@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:paymint/constants/colors.dart';
+import 'package:paymint/utils/shared_prefs.dart';
 import 'package:paymint/widgets/glass_container.dart';
 
 
@@ -17,10 +18,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2),(){
-      GoRouter.of(context).pushReplacementNamed('Home');
-    });
+    checkLoginStatus();
 
+  }
+
+  void checkLoginStatus() async {
+    final loggedIn = await SharedPrefs.isLoggedIn();
+    if (loggedIn) {
+      GoRouter.of(context).goNamed('Home');
+    } else {
+      GoRouter.of(context).goNamed('login');
+    }
   }
 
   @override

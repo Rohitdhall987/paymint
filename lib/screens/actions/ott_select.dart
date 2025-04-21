@@ -47,7 +47,7 @@ class OTTRechargeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: ()=>GoRouter.of(context).pushNamed('ElectricityBillDetails'),
+        onPressed: ()=>GoRouter.of(context).pushNamed('OTTPlansScreen'),
         backgroundColor: AppColors.primaryAccent,
         label: const Text("Next"),
         icon: const Icon(Icons.arrow_forward),
